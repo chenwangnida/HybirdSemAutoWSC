@@ -1,12 +1,14 @@
-package hybirdsem.util;
+package hybirdsem.owlssm.util;
 
 import java.net.URI;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
 import de.dfki.sme2.TestCollection;
+import hybirdsem.owlsm.data.SemanticService;
 
 public class hybirdSem {
 	private static String FILE_NOT_FOUND_ERROR = "Error: The specified file does not exist.";
@@ -43,7 +45,19 @@ public class hybirdSem {
 				System.err.println(NO_TC_ERROR);
 				System.exit(1);
 			}
+
+			// match
+			serviceRegister(requests);
+
 		}
+	}
+
+	private static void serviceRegister(Set<URI> requests) {
+		for (URI uri : requests) {		
+			SemanticService semService = new SemanticService(uri);
+
+		}
+
 	}
 
 	private static void printTCInfo(TestCollection tc) {

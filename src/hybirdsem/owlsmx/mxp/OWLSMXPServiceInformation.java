@@ -19,9 +19,9 @@ import org.mindswap.owls.process.AtomicProcess;
 import org.mindswap.owls.process.Process;
 import org.mindswap.owls.service.Service;
 
-import hybirdsem.owlsmx.mxp.exceptions.OWLSParsingException;
-import hybirdsem.owlsmx.mxp.exceptions.TypeNotFoundException;
-import hybirdsem.owlsmx.mxp.exceptions.WsdlParsingException;
+import hybirdsem.owlssm.mxp.exceptions.OWLSParsingException;
+import hybirdsem.owlssm.mxp.exceptions.TypeNotFoundException;
+import hybirdsem.owlssm.mxp.exceptions.WsdlParsingException;
 import hybirdsem.wsdlanalyzer.parser.SimpleTypeLookupTable;
 import hybirdsem.wsdlanalyzer.parser.WsdlFileParser;
 import hybirdsem.wsdlanalyzer.types.ComplexType;

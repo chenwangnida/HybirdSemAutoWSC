@@ -1,4 +1,4 @@
-package hybirdsem.owlsmx.mxp.exceptions;
+package hybirdsem.owlssm.mxp.exceptions;
 
 /**
  * Is thrown if anything goes wrong during parsing of
