@@ -72,12 +72,12 @@ public class ServiceLoader {
 		// System.out.println("FileURI" + tmp);
 		return new URI(tmp);
 	}
-
-	public ServiceContent loadService(URI uri) {
+	
+	public ServiceContent loadServiceURI(URI uri) {
 		ServiceContent content = new ServiceContent(uri);
 		try {
 			kb.setReasoner("RDFS");
-			// Service service = kb.readService(uri);
+//			 Service service = kb.readService(uri);
 			OWLOntology onto = kb.read(uri);
 			Service service = onto.getService();
 

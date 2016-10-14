@@ -2,6 +2,7 @@ package hybirdsem.owlssm.util;
 
 import java.net.URI;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -10,11 +11,13 @@ import java.util.Vector;
 import de.dfki.sme2.TestCollection;
 import hybirdsem.owlsm.data.SemanticService;
 
-public class hybirdSem {
+public class hybirdSemTool {
 	private static String FILE_NOT_FOUND_ERROR = "Error: The specified file does not exist.";
 	private static String NO_TC_ERROR = "Error: A test collection XML file must be provided for the -x option.";
 
 	private static String X = "-x";
+	private static Map<URI, SemanticService> services = new HashMap<URI, SemanticService>();
+
 
 	public static void main(String[] args) {
 		Vector<String> arguments = new Vector<String>();
@@ -23,7 +26,6 @@ public class hybirdSem {
 		if (arguments.contains(X)) {
 			Set<URI> requests = null;
 			Set<URI> offers = null;
-			String tcName = null;
 			try {
 				String tcString = arguments.get(arguments.indexOf(X) + 1);
 				TestCollection tc = TestCollection.parse(tcString);
@@ -31,7 +33,6 @@ public class hybirdSem {
 					System.err.println(FILE_NOT_FOUND_ERROR + " (" + tcString + ")");
 					System.exit(1);
 				}
-				tcName = tc.getName();
 				printTCInfo(tc);
 				requests = new HashSet<URI>();
 				for (URI request : tc.getQueries()) {
@@ -46,7 +47,7 @@ public class hybirdSem {
 				System.exit(1);
 			}
 
-			// match
+			// register all the services
 			serviceRegister(requests);
 
 		}
@@ -55,9 +56,8 @@ public class hybirdSem {
 	private static void serviceRegister(Set<URI> requests) {
 		for (URI uri : requests) {		
 			SemanticService semService = new SemanticService(uri);
-
+			services.put(uri, semService);
 		}
-
 	}
 
 	private static void printTCInfo(TestCollection tc) {

@@ -28,7 +28,7 @@ public class SemanticService implements java.io.Serializable, Comparable {
 		this.uri = uri;
 		this.name = uri.toString();
 		this.fileURI = uri;
-		ServiceContent content = ServiceLoader.getInstance().loadService(uri);
+		ServiceContent content = ServiceLoader.getInstance().loadServiceURI(uri);
 		this.uri = content.uri;
 		this.name = content.name;
 		this.fileURI = content.fileURI;
