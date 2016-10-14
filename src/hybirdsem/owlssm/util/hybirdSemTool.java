@@ -6,9 +6,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.Vector;
 
 import de.dfki.sme2.TestCollection;
+import hybirdsem.owlsm.data.SemServRequest;
 import hybirdsem.owlsm.data.SemanticService;
 
 public class hybirdSemTool {
@@ -17,6 +19,10 @@ public class hybirdSemTool {
 
 	private static String X = "-x";
 	private static Map<URI, SemanticService> services = new HashMap<URI, SemanticService>();
+	private static Map<URI, SemServRequest> queries = new HashMap<URI, SemServRequest>();
+
+	private static Map<URI, TreeSet<?>> answerset = new HashMap<URI, TreeSet<?>>();
+	private static Map<URI, TreeSet<?>> matchmakerAnswerset = new HashMap<URI, TreeSet<?>>();
 
 
 	public static void main(String[] args) {
@@ -48,17 +54,30 @@ public class hybirdSemTool {
 			}
 
 			// register all the services
-			serviceRegister(requests);
+			serviceRegister(offers);
+			
+			// load all the service requests
+			serviceRequests(requests);
 
 		}
 	}
 
-	private static void serviceRegister(Set<URI> requests) {
-		for (URI uri : requests) {		
+	private static void serviceRegister(Set<URI> offers) {
+		for (URI uri : offers) {		
 			SemanticService semService = new SemanticService(uri);
 			services.put(uri, semService);
 		}
 	}
+	
+	private static void serviceRequests(Set<URI> requests) {
+		for (URI uri : requests) {		
+			SemServRequest semServReq = new SemServRequest(uri);
+			queries.put(uri, semServReq);					
+			answerset.put(uri,new TreeSet());
+			matchmakerAnswerset.put(uri,new TreeSet());				
+		}
+	}
+	
 
 	private static void printTCInfo(TestCollection tc) {
 		System.out.println("Test collection information:");
