@@ -1,4 +1,4 @@
-package hybirdsem.owlsm.data;
+package hybirdsem.owlssm.data;
 
 import java.net.URI;
 import java.util.HashSet;

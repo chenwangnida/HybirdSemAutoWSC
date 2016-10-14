@@ -1,4 +1,4 @@
-package hybirdsem.owlsmx.mxp;
+package hybirdsem.owlssm.mxp;
 
 import java.io.BufferedReader;
 import java.io.File;

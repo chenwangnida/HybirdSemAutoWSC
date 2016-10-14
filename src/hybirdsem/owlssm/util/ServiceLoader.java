@@ -34,8 +34,8 @@ import org.mindswap.owls.process.Input;
 import org.mindswap.owls.process.Output;
 import org.mindswap.owls.service.Service;
 
+import hybirdsem.owlssm.mxp.OWLSMXPServiceInformation;
 import hybirdsem.wsdlanalyzer.parser.SimpleTypeLookupTable;
-import hybirdsem.owlsmx.mxp.OWLSMXPServiceInformation;
 
 public class ServiceLoader {
 	OWLKnowledgeBase kb = OWLFactory.createKB();
