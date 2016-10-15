@@ -15,7 +15,7 @@
  */
 package hybirdsem.owlssm.data;
 
-import de.dfki.owlsmx.SimilarityMatchmaker;
+import hybirdsem.owlsmx.SimilarityMatchmaker;
 
 /**
  * An abstract representation of the degree of match

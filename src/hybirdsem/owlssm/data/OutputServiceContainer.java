@@ -22,7 +22,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.Vector;
 
-import de.dfki.owlsmx.exceptions.MatchingException;
+import hybirdsem.owlsmx.exceptions.MatchingException;
 
 
 

@@ -131,8 +131,8 @@ public class ServiceEntry implements Comparable{
     
     public String toString() {
         if (uri==null)
-            return "(" + ID + "/" + de.dfki.owlsmx.utils.MatchmakerUtils.degreeOfMatchIntToString(degreeOfMatch) + "/" + similarity + ")";
-        return "("+ uri + "/" + ID + "/" + de.dfki.owlsmx.utils.MatchmakerUtils.degreeOfMatchIntToString(degreeOfMatch) + "/" + similarity + ")";
+            return "(" + ID + "/" + hybirdsem.owlsmx.utils.MatchmakerUtils.degreeOfMatchIntToString(degreeOfMatch) + "/" + similarity + ")";
+        return "("+ uri + "/" + ID + "/" + hybirdsem.owlsmx.utils.MatchmakerUtils.degreeOfMatchIntToString(degreeOfMatch) + "/" + similarity + ")";
         
     }
     

@@ -17,8 +17,8 @@ package hybirdsem.owlssm.similaritymeasures;
 
 import java.util.Map;
 
-import de.dfki.owlsmx.exceptions.MatchingException;
-import de.dfki.owlsmx.utils.CosineResultTriple;
+import hybirdsem.owlsmx.exceptions.MatchingException;
+import hybirdsem.owlsmx.utils.CosineResultTriple;
 import hybirdsem.owlssm.Indexer.Index;
 
 

@@ -21,9 +21,9 @@ import java.util.Iterator;
 
 import org.mindswap.pellet.TuBox.NotUnfoldableException;
 
-import de.dfki.owlsmx.exceptions.MatchingException;
-import de.dfki.owlsmx.io.ErrorLog;
-import de.dfki.owlsmx.reasoning.PelletReasoner;
+import hybirdsem.owlsmx.exceptions.MatchingException;
+import hybirdsem.owlsmx.io.ErrorLog;
+import hybirdsem.owlsmx.reasoning.PelletReasoner;
 import hybirdsem.owlssm.Indexer.Index;
 import hybirdsem.owlssm.data.LocalOntologyContainer;
 

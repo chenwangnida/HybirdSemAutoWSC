@@ -22,12 +22,12 @@ import java.util.Set;
 
 import org.mindswap.pellet.TuBox.NotUnfoldableException;
 
-import de.dfki.owlsmx.exceptions.MatchingException;
-import de.dfki.owlsmx.reasoning.PelletReasoner;
-import de.dfki.owlsmx.utils.CollectionUtils;
-import de.dfki.owlsmx.utils.CosineResultTriple;
-import de.dfki.owlsmx.utils.MathUtils;
-import de.dfki.owlsmx.utils.StringUtils;
+import hybirdsem.owlsmx.exceptions.MatchingException;
+import hybirdsem.owlsmx.reasoning.PelletReasoner;
+import hybirdsem.owlsmx.utils.CollectionUtils;
+import hybirdsem.owlsmx.utils.CosineResultTriple;
+import hybirdsem.owlsmx.utils.MathUtils;
+import hybirdsem.owlsmx.utils.StringUtils;
 import hybirdsem.owlssm.Indexer.Index;
 import hybirdsem.owlssm.Indexer.SimpleIndex;
 import hybirdsem.owlssm.data.LocalOntologyContainer;
@@ -241,7 +241,7 @@ public class CosineSimilarity extends SimilarityMeasure {
             current = (String) iter.next();
             
             if ( (!pc1.containsKey(current)) && (!pc2.containsKey(current)))
-            	de.dfki.owlsmx.io.ErrorLog.instanceOf().report("Problem with current: " +  current);
+            	hybirdsem.owlsmx.io.ErrorLog.instanceOf().report("Problem with current: " +  current);
             
             if (pc1.containsKey(current))
                 r1[count]=((Integer)pc1.get(current)).intValue();
@@ -253,7 +253,7 @@ public class CosineSimilarity extends SimilarityMeasure {
             else
                 r2[count]=0;
             if ( (r1[count]==0) && (r2[count]==0))
-               de.dfki.owlsmx.io.ErrorLog.instanceOf().report("A new Problem with current: " +  current);
+               hybirdsem.owlsmx.io.ErrorLog.instanceOf().report("A new Problem with current: " +  current);
             //if (this.usesIndex())
                 idf[count] = index.getIDF(current);
             //else

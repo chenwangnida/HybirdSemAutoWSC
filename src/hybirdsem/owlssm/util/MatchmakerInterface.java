@@ -24,10 +24,10 @@ import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import de.dfki.owlsmx.exceptions.MatchingException;
-import de.dfki.owlsmx.gui.data.HybridServiceItem;
-import de.dfki.owlsmx.gui.data.ServiceItem;
-import de.dfki.owlsmx.gui.data.TestCollection;
+import hybirdsem.owlsmx.exceptions.MatchingException;
+import hybirdsem.owlsmx.gui.data.HybridServiceItem;
+import hybirdsem.owlsmx.gui.data.ServiceItem;
+import hybirdsem.owlsmx.gui.data.TestCollection;
 import hybirdsem.owlssm.data.MatchedService;
 import hybirdsem.owlssm.io.ErrorLog;
 import hybirdsem.owlssm.similaritymeasures.SimilarityMeasure;
@@ -58,7 +58,7 @@ public class MatchmakerInterface {
 		
 	}
 	
-	private de.dfki.owlsmx.SimilarityMatchingEngine matcher=null;
+	private hybirdsem.owlsmx.SimilarityMatchingEngine matcher=null;
 	private static MatchmakerInterface _instance = new MatchmakerInterface();
 	private boolean ranMatchmaker = false;
 	
@@ -71,28 +71,28 @@ public class MatchmakerInterface {
 		ErrorLog.debug("Similarity measure: " + getSimType(type));
 		switch(type){		
 			case SimilarityMeasure.SIMILARITY_COSINE:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.CosineSimilarity());
+				matcher = new hybirdsem.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.CosineSimilarity());
 				break;
 			case SimilarityMeasure.SIMILARITY_EXTENDED_JACCARD:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.ExtendedJaccardMeasure());
+				matcher = new hybirdsem.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.ExtendedJaccardMeasure());
 				break;
 			case SimilarityMeasure.SIMILARITY_JENSEN_SHANNON:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.JensenShannonMeasure());
+				matcher = new hybirdsem.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.JensenShannonMeasure());
 				break;
 			case SimilarityMeasure.SIMILARITY_LOI:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.ConstraintSimilarity());
+				matcher = new hybirdsem.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.ConstraintSimilarity());
 				break;
 			default:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(null);				
+				matcher = new hybirdsem.owlsmx.SimilarityMatchingEngine(null);				
 		}		
 		matcher.clear();
 	}
 	
 	public SortedSet matchRequest(URI profileURI, int minimumDegreeOfMatch, double treshold) {
 		try {				
-			de.dfki.owlsmx.io.ErrorLog.debug("Matching request: " + profileURI);
-			de.dfki.owlsmx.io.ErrorLog.debug("Minimum DOM: " + minimumDegreeOfMatch);
-			de.dfki.owlsmx.io.ErrorLog.debug("Similarity treshold: " + treshold);
+			hybirdsem.owlsmx.io.ErrorLog.debug("Matching request: " + profileURI);
+			hybirdsem.owlsmx.io.ErrorLog.debug("Minimum DOM: " + minimumDegreeOfMatch);
+			hybirdsem.owlsmx.io.ErrorLog.debug("Similarity treshold: " + treshold);
 			matcher.setIntegrative(integrative);
 			ranMatchmaker = true;
 			//matcher.setSimilarityMeasure(GUIState.getInstance().getSimilarityMeasure());
@@ -117,7 +117,7 @@ public class MatchmakerInterface {
 			else {
 				result = MatchmakerToGUISet(tmpResult);
 			}
-			de.dfki.owlsmx.io.ErrorLog.debug("Resultat:\n   " + tmpResult);	
+			hybirdsem.owlsmx.io.ErrorLog.debug("Resultat:\n   " + tmpResult);	
 			return result;
 		} catch (MatchingException e) {
 			e.printStackTrace();
@@ -129,11 +129,11 @@ public class MatchmakerInterface {
 	public void addService(URI profileURI) {
 		try {
 		if (matcher==null) {
-			de.dfki.owlsmx.io.ErrorLog.debug(this.getClass().toString()+": Reset machmaker");
+			hybirdsem.owlsmx.io.ErrorLog.debug(this.getClass().toString()+": Reset machmaker");
 			createMatchmaker();
 		}
 
-		de.dfki.owlsmx.io.ErrorLog.debug(this.getClass().toString()+": Adding service: " + profileURI.toString());
+		hybirdsem.owlsmx.io.ErrorLog.debug(this.getClass().toString()+": Adding service: " + profileURI.toString());
 		matcher.addService(profileURI);
 		}
 		catch(Exception e) {
@@ -192,7 +192,7 @@ public class MatchmakerInterface {
 	public void clear() {
 		matcher.clear();
 		matcher = null;
-		de.dfki.owlsmx.io.ErrorLog.debug(this.getClass().toString()+": Reset machmaker");
+		hybirdsem.owlsmx.io.ErrorLog.debug(this.getClass().toString()+": Reset machmaker");
 	}
 	
 	public boolean didRun() {

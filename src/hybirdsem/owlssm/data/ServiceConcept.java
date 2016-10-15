@@ -19,7 +19,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeSet;
 
-import de.dfki.owlsmx.utils.MatchmakerUtils;
+import hybirdsem.owlsmx.utils.MatchmakerUtils;
 
 
 

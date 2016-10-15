@@ -15,7 +15,7 @@
  */
 package hybirdsem.owlssm.data;
 
-import de.dfki.owlsmx.exceptions.MatchingException;
+import hybirdsem.owlsmx.exceptions.MatchingException;
 
 /**
  * An implementation of the degree of match for output concepts
@@ -148,7 +148,7 @@ public class DOM extends DegreeOfMatch{
     
     public void mergeDOM(DOM dom) throws MatchingException {
         if ( (!plugin.containsUnfoldedInformation()) || (!subsumedBy.containsUnfoldedInformation()) )
-        	de.dfki.owlsmx.io.ErrorLog.instanceOf().report("Couldn't find unfolding information (" + (!plugin.containsUnfoldedInformation()) + "|" + (!subsumedBy.containsUnfoldedInformation()) + ")");
+        	hybirdsem.owlsmx.io.ErrorLog.instanceOf().report("Couldn't find unfolding information (" + (!plugin.containsUnfoldedInformation()) + "|" + (!subsumedBy.containsUnfoldedInformation()) + ")");
         ExtendedServiceInformation plugin_candidate = dom.getPlugin();
         ExtendedServiceInformation subsumed_by_candidate = dom.getSubsumedBy();
         

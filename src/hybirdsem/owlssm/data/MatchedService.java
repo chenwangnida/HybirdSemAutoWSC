@@ -16,9 +16,10 @@
 package hybirdsem.owlssm.data;
 
 import java.net.URI;
-import java.io.StringWriter;
 
-import de.dfki.owlsmx.utils.MatchmakerUtils;
+import hybirdsem.owlsmx.utils.MatchmakerUtils;
+
+import java.io.StringWriter;
 
 
 

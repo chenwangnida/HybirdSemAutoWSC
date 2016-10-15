@@ -18,7 +18,7 @@ import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.Restriction;
 import com.hp.hpl.jena.rdf.model.Resource;
 
-import de.dfki.owlsmx.io.ErrorLog;
+import hybirdsem.owlsmx.io.ErrorLog;
 
 /**
  * A container that handles the local ontology
@@ -49,7 +49,7 @@ public class LocalOntologyContainer {
 	 */
 	private  void debugDisplay(String string) {
 		if (debug)
-			de.dfki.owlsmx.io.ErrorLog.debug(string);
+			hybirdsem.owlsmx.io.ErrorLog.debug(string);
 	}
 	
     /**
@@ -143,8 +143,8 @@ public class LocalOntologyContainer {
     	}
     	catch(Exception e) {
     		//e.printStackTrace();
-    		de.dfki.owlsmx.io.ErrorLog.instanceOf().report(this.getClass().toString() + "|createOnProperty: Couldn't create onProperty for restriction " + r.toString());
-    		de.dfki.owlsmx.io.ErrorLog.instanceOf().report("                    returned null instead" );
+    		hybirdsem.owlsmx.io.ErrorLog.instanceOf().report(this.getClass().toString() + "|createOnProperty: Couldn't create onProperty for restriction " + r.toString());
+    		hybirdsem.owlsmx.io.ErrorLog.instanceOf().report("                    returned null instead" );
     		return null;
     	}
     }
@@ -342,7 +342,7 @@ public class LocalOntologyContainer {
     boolean processClass(OWLKnowledgeBase kbase, URI clazzURI) {
     	OWLClass clazz =kbase.getClass(clazzURI);
     	if (clazz==null) {
-    		de.dfki.owlsmx.io.ErrorLog.instanceOf().report("Couldn't find the clazz " + clazzURI + " in base " + kbase);
+    		hybirdsem.owlsmx.io.ErrorLog.instanceOf().report("Couldn't find the clazz " + clazzURI + " in base " + kbase);
     		return false;
     	}
     	debugDisplay("Processing            " + clazz.getURI().toString());

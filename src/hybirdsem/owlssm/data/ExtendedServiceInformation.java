@@ -15,7 +15,7 @@
  */
 package hybirdsem.owlssm.data;
 
-import de.dfki.owlsmx.utils.MatchmakerUtils;
+import hybirdsem.owlsmx.utils.MatchmakerUtils;
 
 /**
  * Extended service information contains additional the similarity and degree
