@@ -10,8 +10,8 @@ import java.util.TreeSet;
 import java.util.Vector;
 
 import de.dfki.sme2.TestCollection;
-import hybirdsem.owlssm.data.SemServRequest;
-import hybirdsem.owlssm.data.SemanticService;
+import hybirdsem.owlssm.wsc.data.SemServRequest;
+import hybirdsem.owlssm.wsc.data.SemanticService;
 
 public class hybirdSemTool {
 	private static String FILE_NOT_FOUND_ERROR = "Error: The specified file does not exist.";
