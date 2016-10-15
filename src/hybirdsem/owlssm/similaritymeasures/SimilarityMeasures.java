@@ -15,7 +15,7 @@
  */
 package hybirdsem.owlssm.similaritymeasures;
 
-import hybirdsem.owlssm.util.MathUtils;
+import hybirdsem.owlssm.wsc.util.MathUtils;
 
 /**
  * A collection of useful functions for similarity measures

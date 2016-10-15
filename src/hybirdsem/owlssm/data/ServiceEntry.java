@@ -18,7 +18,7 @@ package hybirdsem.owlssm.data;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import hybirdsem.owlssm.util.MatchmakerUtils;
+import hybirdsem.owlssm.wsc.util.MatchmakerUtils;
 
 
 

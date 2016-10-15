@@ -1,11 +1,11 @@
-package hybirdsem.owlssm.util.tasks;
+package hybirdsem.owlssm.wsc.util.tasks;
 
 import java.util.Set;
 import java.util.TreeSet;
 
 import hybirdsem.owlssm.data.SemanticService;
 import hybirdsem.owlssm.io.ErrorLog;
-import hybirdsem.owlssm.util.MatchmakerInterface;
+import hybirdsem.owlssm.wsc.util.MatchmakerInterface;
 
 public class AddServicesToMatchmakerTask {
     private Set services = new TreeSet();

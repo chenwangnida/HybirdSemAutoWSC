@@ -1,4 +1,4 @@
-package hybirdsem.owlssm.util;
+package hybirdsem.owlssm.wsc.util;
 
 import java.net.URI;
 import java.util.Collections;
