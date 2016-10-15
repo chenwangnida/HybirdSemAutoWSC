@@ -28,7 +28,13 @@ import hybirdsem.owlssm.exceptions.MatchingException;
 import de.dfki.owlsmx.gui.data.HybridServiceItem;
 import hybirdsem.owlssm.wsc.data.SemanticService;
 import de.dfki.owlsmx.gui.data.TestCollection;
-import de.dfki.owlsmx.similaritymeasures.SimilarityMeasure;
+import hybirdsem.owlssm.similaritymeasures.SimilarityMeasure;
+import hybirdsem.owlssm.io.ErrorLog;
+import hybirdsem.owlssm.SimilarityMatchingEngine;
+import hybirdsem.owlssm.similaritymeasures.CosineSimilarity;
+import hybirdsem.owlssm.similaritymeasures.ConstraintSimilarity;
+import hybirdsem.owlssm.similaritymeasures.ExtendedJaccardMeasure;
+import hybirdsem.owlssm.similaritymeasures.JensenShannonMeasure;
 
 /**
  * @author Ben
@@ -55,7 +61,7 @@ public class MatchmakerInterface {
 		
 	}
 	
-	private de.dfki.owlsmx.SimilarityMatchingEngine matcher=null;
+	private SimilarityMatchingEngine matcher=null;
 	private static MatchmakerInterface _instance = new MatchmakerInterface();
 	private boolean ranMatchmaker = false;
 	
@@ -65,31 +71,31 @@ public class MatchmakerInterface {
 	
 	public void createMatchmaker() {
 		short type = (short)GUIState.getInstance().getSimilarityMeasure();
-		de.dfki.owlsmx.io.ErrorLog.debug("Similarity measure: " + getSimType(type));
+		ErrorLog.debug("Similarity measure: " + getSimType(type));
 		switch(type){		
 			case SimilarityMeasure.SIMILARITY_COSINE:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new de.dfki.owlsmx.similaritymeasures.CosineSimilarity());
+				matcher = new SimilarityMatchingEngine(new CosineSimilarity());
 				break;
 			case SimilarityMeasure.SIMILARITY_EXTENDED_JACCARD:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new de.dfki.owlsmx.similaritymeasures.ExtendedJaccardMeasure());
+				matcher = new SimilarityMatchingEngine(new ExtendedJaccardMeasure());
 				break;
 			case SimilarityMeasure.SIMILARITY_JENSEN_SHANNON:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new de.dfki.owlsmx.similaritymeasures.JensenShannonMeasure());
+				matcher = new SimilarityMatchingEngine(new JensenShannonMeasure());
 				break;
 			case SimilarityMeasure.SIMILARITY_LOI:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new de.dfki.owlsmx.similaritymeasures.ConstraintSimilarity());
+				matcher = new SimilarityMatchingEngine(new ConstraintSimilarity());
 				break;
 			default:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(null);				
+				matcher = new SimilarityMatchingEngine(null);				
 		}		
 		matcher.clear();
 	}
 	
 	public SortedSet matchRequest(URI profileURI, int minimumDegreeOfMatch, double treshold) {
 		try {				
-			de.dfki.owlsmx.io.ErrorLog.debug("Matching request: " + profileURI);
-			de.dfki.owlsmx.io.ErrorLog.debug("Minimum DOM: " + minimumDegreeOfMatch);
-			de.dfki.owlsmx.io.ErrorLog.debug("Similarity treshold: " + treshold);
+			ErrorLog.debug("Matching request: " + profileURI);
+			ErrorLog.debug("Minimum DOM: " + minimumDegreeOfMatch);
+			ErrorLog.debug("Similarity treshold: " + treshold);
 			matcher.setIntegrative(integrative);
 			ranMatchmaker = true;
 			//matcher.setSimilarityMeasure(GUIState.getInstance().getSimilarityMeasure());
@@ -114,7 +120,7 @@ public class MatchmakerInterface {
 			else {
 				result = MatchmakerToGUISet(tmpResult);
 			}
-			de.dfki.owlsmx.io.ErrorLog.debug("Resultat:\n   " + tmpResult);	
+			ErrorLog.debug("Resultat:\n   " + tmpResult);	
 			return result;
 		} catch (MatchingException e) {
 			e.printStackTrace();
@@ -126,11 +132,11 @@ public class MatchmakerInterface {
 	public void addService(URI profileURI) {
 		try {
 		if (matcher==null) {
-			de.dfki.owlsmx.io.ErrorLog.debug(this.getClass().toString()+": Reset machmaker");
+			ErrorLog.debug(this.getClass().toString()+": Reset machmaker");
 			createMatchmaker();
 		}
 
-		de.dfki.owlsmx.io.ErrorLog.debug(this.getClass().toString()+": Adding service: " + profileURI.toString());
+		ErrorLog.debug(this.getClass().toString()+": Adding service: " + profileURI.toString());
 		matcher.addService(profileURI);
 		}
 		catch(Exception e) {
@@ -150,7 +156,7 @@ public class MatchmakerInterface {
 //		owlsmx.io.ErrorLog.debug("Matchmaker result: " +  result);
 		MatchedService m_result;
 		HybridServiceItem h_result;
-		ServiceItem s_item;
+		SemanticService s_item;
 		for(Iterator iter = result.iterator();iter.hasNext();){
 			m_result = (MatchedService) iter.next();
 			s_item = TestCollection.getInstance().getService(m_result.serviceURI);
@@ -172,7 +178,7 @@ public class MatchmakerInterface {
 		}
 		MatchedService m_result;
 		HybridServiceItem h_result;
-		ServiceItem s_item;
+		SemanticService s_item;
 		for(Iterator iter = results.iterator(); iter.hasNext(); ) {
 			m_result = (MatchedService) iter.next();
 			s_item = TestCollection.getInstance().getService(m_result.serviceURI);
@@ -189,7 +195,7 @@ public class MatchmakerInterface {
 	public void clear() {
 		matcher.clear();
 		matcher = null;
-		de.dfki.owlsmx.io.ErrorLog.debug(this.getClass().toString()+": Reset machmaker");
+		ErrorLog.debug(this.getClass().toString()+": Reset machmaker");
 	}
 	
 	public boolean didRun() {
