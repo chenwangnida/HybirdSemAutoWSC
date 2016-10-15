@@ -24,9 +24,9 @@ import org.mindswap.pellet.TuBox.NotUnfoldableException;
 
 import com.hp.hpl.jena.ontology.OntClass;
 
-import de.dfki.owlsmx.data.LocalOntologyContainer;
 import hybirdsem.owlssm.Indexer.Index;
 import hybirdsem.owlssm.Indexer.SimpleIndex;
+import hybirdsem.owlssm.data.LocalOntologyContainer;
 import hybirdsem.owlssm.exceptions.MatchingException;
 import hybirdsem.owlssm.reasoning.PelletReasoner;
 

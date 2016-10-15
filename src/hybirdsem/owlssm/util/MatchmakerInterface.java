@@ -23,11 +23,12 @@ import java.net.URI;
 import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import de.dfki.owlsmx.data.MatchedService;
+
 import de.dfki.owlsmx.exceptions.MatchingException;
 import de.dfki.owlsmx.gui.data.HybridServiceItem;
 import de.dfki.owlsmx.gui.data.ServiceItem;
 import de.dfki.owlsmx.gui.data.TestCollection;
+import hybirdsem.owlssm.data.MatchedService;
 import hybirdsem.owlssm.io.ErrorLog;
 import hybirdsem.owlssm.similaritymeasures.SimilarityMeasure;
 import hybirdsem.owlssm.wsc.util.MatchMakerState;
