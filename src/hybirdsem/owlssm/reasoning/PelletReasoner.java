@@ -25,7 +25,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import hybirdsem.owlssm.exceptions.ConceptNotFoundException;
 import hybirdsem.owlssm.exceptions.MatchingException;
 import hybirdsem.owlssm.io.ErrorLog;
-import hybirdsem.owlssm.wsc.util.MatchmakerUtils;
+import hybirdsem.owlssm.util.MatchmakerUtils;
 
 /**
  * An extension of the Pellet reasoner which includes additional functions

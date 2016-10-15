@@ -17,7 +17,7 @@
 /**
  * 
  */
-package hybirdsem.owlssm.wsc.util;
+package hybirdsem.owlssm.util;
 
 import java.net.URI;
 import java.util.Iterator;
@@ -30,6 +30,7 @@ import de.dfki.owlsmx.gui.data.ServiceItem;
 import de.dfki.owlsmx.gui.data.TestCollection;
 import hybirdsem.owlssm.io.ErrorLog;
 import hybirdsem.owlssm.similaritymeasures.SimilarityMeasure;
+import hybirdsem.owlssm.wsc.util.MatchMakerState;
 
 /**
  * @author Ben

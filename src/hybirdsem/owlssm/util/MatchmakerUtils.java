@@ -12,7 +12,7 @@
  * published by the Mozilla Foundation at
  * http://www.mozilla.org/MPL/MPL-1.1.txt
  */
-package hybirdsem.owlssm.wsc.util;
+package hybirdsem.owlssm.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
