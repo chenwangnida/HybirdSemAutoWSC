@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.net.URI;
 import java.util.SortedSet;
 
-import hybirdsem.owlsmx.exceptions.MatchingException;
+import hybirdsem.owlssm.exceptions.MatchingException;
 
 
 

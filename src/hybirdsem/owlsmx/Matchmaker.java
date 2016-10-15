@@ -72,7 +72,7 @@ public interface Matchmaker{
      * @throws java.net.URISyntaxException
      * @throws de.dfki.owlsmx.exceptions.MatchingException
      */
-    public java.util.SortedSet matchRequest(java.net.URI profileURI) throws java.net.URISyntaxException, de.dfki.owlsmx.exceptions.MatchingException;
+    public java.util.SortedSet matchRequest(java.net.URI profileURI) throws java.net.URISyntaxException, hybirdsem.owlssm.exceptions.MatchingException;
     
      /**
      * Matches the service request which is specified by a string
@@ -82,7 +82,7 @@ public interface Matchmaker{
      * @return SortedSet of (MatchedService) services
      * @throws de.dfki.owlsmx.exceptions.MatchingException
      */
-    public java.util.SortedSet matchRequest(String profile) throws de.dfki.owlsmx.exceptions.MatchingException;
+    public java.util.SortedSet matchRequest(String profile) throws hybirdsem.owlssm.exceptions.MatchingException;
     
     /**
      * Matches the service request which will be read from the input stream
@@ -92,7 +92,7 @@ public interface Matchmaker{
      * @return SortedSet of (MatchedService) services
      * @throws de.dfki.owlsmx.exceptions.MatchingException
      */
-    public java.util.SortedSet matchRequest(java.io.InputStream profileStream) throws de.dfki.owlsmx.exceptions.MatchingException;
+    public java.util.SortedSet matchRequest(java.io.InputStream profileStream) throws hybirdsem.owlssm.exceptions.MatchingException;
     
     /**
      * Loads the last saved state of the matchmaker

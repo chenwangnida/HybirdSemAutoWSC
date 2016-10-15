@@ -47,22 +47,22 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 
-import hybirdsem.owlsmx.Indexer.Index;
-import hybirdsem.owlsmx.Indexer.SimpleIndex;
-import hybirdsem.owlsmx.data.ConceptServiceRegistry;
-import hybirdsem.owlsmx.data.DOM;
-import hybirdsem.owlsmx.data.ExtendedServiceInformation;
-import hybirdsem.owlsmx.data.InputServiceContainer;
-import hybirdsem.owlsmx.data.LocalOntologyContainer;
-import hybirdsem.owlsmx.data.MatchingResult;
-import hybirdsem.owlsmx.data.OutputServiceContainer;
-import hybirdsem.owlsmx.data.ServiceInformation;
-import hybirdsem.owlsmx.exceptions.ConceptNotFoundException;
-import hybirdsem.owlsmx.exceptions.MatchingException;
-import hybirdsem.owlsmx.io.ErrorLog;
-import hybirdsem.owlsmx.reasoning.PelletReasoner;
-import hybirdsem.owlsmx.similaritymeasures.SimilarityMeasure;
-import hybirdsem.owlsmx.utils.MatchmakerUtils;
+import hybirdsem.owlssm.Indexer.Index;
+import hybirdsem.owlssm.Indexer.SimpleIndex;
+import hybirdsem.owlssm.data.ConceptServiceRegistry;
+import hybirdsem.owlssm.data.DOM;
+import hybirdsem.owlssm.data.ExtendedServiceInformation;
+import hybirdsem.owlssm.data.InputServiceContainer;
+import hybirdsem.owlssm.data.LocalOntologyContainer;
+import hybirdsem.owlssm.data.MatchingResult;
+import hybirdsem.owlssm.data.OutputServiceContainer;
+import hybirdsem.owlssm.data.ServiceInformation;
+import hybirdsem.owlssm.exceptions.ConceptNotFoundException;
+import hybirdsem.owlssm.exceptions.MatchingException;
+import hybirdsem.owlssm.io.ErrorLog;
+import hybirdsem.owlssm.reasoning.PelletReasoner;
+import hybirdsem.owlssm.similaritymeasures.SimilarityMeasure;
+import hybirdsem.owlssm.util.MatchmakerUtils;
 
 
 
