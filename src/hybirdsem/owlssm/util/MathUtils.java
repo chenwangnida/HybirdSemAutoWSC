@@ -14,7 +14,7 @@
  */
 package hybirdsem.owlssm.util;
 
-import de.dfki.owlsmx.similaritymeasures.SimilarityMeasures;
+import hybirdsem.owlssm.similaritymeasures.SimilarityMeasures;
 
 /**
  * @author bEn

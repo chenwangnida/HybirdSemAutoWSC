@@ -13,7 +13,7 @@
  * published by the Mozilla Foundation at
  * http://www.mozilla.org/MPL/MPL-1.1.txt
  */
-package de.dfki.owlsmx.similaritymeasures;
+package hybirdsem.owlssm.similaritymeasures;
 
 import java.net.URISyntaxException;
 import java.util.HashSet;

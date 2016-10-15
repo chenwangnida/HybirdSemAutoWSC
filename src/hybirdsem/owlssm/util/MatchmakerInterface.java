@@ -28,8 +28,8 @@ import de.dfki.owlsmx.exceptions.MatchingException;
 import de.dfki.owlsmx.gui.data.HybridServiceItem;
 import de.dfki.owlsmx.gui.data.ServiceItem;
 import de.dfki.owlsmx.gui.data.TestCollection;
-import de.dfki.owlsmx.similaritymeasures.SimilarityMeasure;
 import hybirdsem.owlssm.io.ErrorLog;
+import hybirdsem.owlssm.similaritymeasures.SimilarityMeasure;
 
 /**
  * @author Ben
@@ -69,16 +69,16 @@ public class MatchmakerInterface {
 		ErrorLog.debug("Similarity measure: " + getSimType(type));
 		switch(type){		
 			case SimilarityMeasure.SIMILARITY_COSINE:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new de.dfki.owlsmx.similaritymeasures.CosineSimilarity());
+				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.CosineSimilarity());
 				break;
 			case SimilarityMeasure.SIMILARITY_EXTENDED_JACCARD:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new de.dfki.owlsmx.similaritymeasures.ExtendedJaccardMeasure());
+				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.ExtendedJaccardMeasure());
 				break;
 			case SimilarityMeasure.SIMILARITY_JENSEN_SHANNON:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new de.dfki.owlsmx.similaritymeasures.JensenShannonMeasure());
+				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.JensenShannonMeasure());
 				break;
 			case SimilarityMeasure.SIMILARITY_LOI:
-				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new de.dfki.owlsmx.similaritymeasures.ConstraintSimilarity());
+				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new hybirdsem.owlssm.similaritymeasures.ConstraintSimilarity());
 				break;
 			default:
 				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(null);				
