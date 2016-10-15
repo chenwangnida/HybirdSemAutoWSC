@@ -1,4 +1,4 @@
-package hybirdsem.owlssm.wsc.util;
+package hybirdsem.owlssm.wsc.utils;
 
 /*
  * Created on 15.11.2005

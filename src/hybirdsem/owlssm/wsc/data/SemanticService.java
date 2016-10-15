@@ -4,8 +4,8 @@ import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 
-import hybirdsem.owlssm.wsc.util.ServiceLoader;
-import hybirdsem.owlssm.wsc.util.ServiceLoader.ServiceContent;
+import hybirdsem.owlssm.wsc.utils.ServiceLoader;
+import hybirdsem.owlssm.wsc.utils.ServiceLoader.ServiceContent;
 
 public class SemanticService implements java.io.Serializable, Comparable {
 	/**

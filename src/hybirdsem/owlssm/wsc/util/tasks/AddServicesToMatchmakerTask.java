@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import hybirdsem.owlssm.io.ErrorLog;
-import hybirdsem.owlssm.util.MatchmakerInterface;
+import hybirdsem.owlssm.utils.MatchmakerInterface;
 import hybirdsem.owlssm.wsc.data.SemanticService;
 
 public class AddServicesToMatchmakerTask {

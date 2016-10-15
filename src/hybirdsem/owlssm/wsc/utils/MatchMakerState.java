@@ -1,4 +1,4 @@
-package hybirdsem.owlssm.wsc.util;
+package hybirdsem.owlssm.wsc.utils;
 
 /*
  * OWL-S Matchmaker
