@@ -22,8 +22,8 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import hybirdsem.owlssm.io.ErrorLog;
-import de.dfki.owlsmx.stemmer.PorterStemmer;
-import de.dfki.owlsmx.tokenizer.PrimitiveConceptTokenizer;
+import hybirdsem.owlssm.stemmer.PorterStemmer;
+import hybirdsem.owlssm.tokenizer.PrimitiveConceptTokenizer;
 
 
 

@@ -29,6 +29,7 @@ import de.dfki.owlsmx.gui.data.HybridServiceItem;
 import de.dfki.owlsmx.gui.data.ServiceItem;
 import de.dfki.owlsmx.gui.data.TestCollection;
 import de.dfki.owlsmx.similaritymeasures.SimilarityMeasure;
+import hybirdsem.owlssm.io.ErrorLog;
 
 /**
  * @author Ben
@@ -65,7 +66,7 @@ public class MatchmakerInterface {
 	
 	public void createMatchmaker() {
 		short type = (short)MatchMakerState.getInstance().getSimilarityMeasure();
-		de.dfki.owlsmx.io.ErrorLog.debug("Similarity measure: " + getSimType(type));
+		ErrorLog.debug("Similarity measure: " + getSimType(type));
 		switch(type){		
 			case SimilarityMeasure.SIMILARITY_COSINE:
 				matcher = new de.dfki.owlsmx.SimilarityMatchingEngine(new de.dfki.owlsmx.similaritymeasures.CosineSimilarity());

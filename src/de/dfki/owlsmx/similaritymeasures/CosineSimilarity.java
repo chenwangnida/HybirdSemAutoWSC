@@ -25,13 +25,13 @@ import org.mindswap.pellet.TuBox.NotUnfoldableException;
 import de.dfki.owlsmx.data.LocalOntologyContainer;
 import de.dfki.owlsmx.exceptions.MatchingException;
 import de.dfki.owlsmx.reasoning.PelletReasoner;
-import de.dfki.owlsmx.tokenizer.PrimitiveConceptTokenizer;
 import de.dfki.owlsmx.utils.CollectionUtils;
 import de.dfki.owlsmx.utils.CosineResultTriple;
 import de.dfki.owlsmx.utils.MathUtils;
 import de.dfki.owlsmx.utils.StringUtils;
 import hybirdsem.owlssm.Indexer.Index;
 import hybirdsem.owlssm.Indexer.SimpleIndex;
+import hybirdsem.owlssm.tokenizer.PrimitiveConceptTokenizer;
 
 
 /**
