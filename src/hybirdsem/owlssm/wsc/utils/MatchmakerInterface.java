@@ -25,7 +25,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import hybirdsem.owlssm.data.MatchedService;
 import hybirdsem.owlssm.exceptions.MatchingException;
-import de.dfki.owlsmx.gui.data.HybridServiceItem;
+import hybirdsem.owlssm.wsc.data.HybirdSemanticService;
 import hybirdsem.owlssm.wsc.data.SemanticService;
 import de.dfki.owlsmx.gui.data.TestCollection;
 import hybirdsem.owlssm.similaritymeasures.SimilarityMeasure;
@@ -35,6 +35,7 @@ import hybirdsem.owlssm.similaritymeasures.CosineSimilarity;
 import hybirdsem.owlssm.similaritymeasures.ConstraintSimilarity;
 import hybirdsem.owlssm.similaritymeasures.ExtendedJaccardMeasure;
 import hybirdsem.owlssm.similaritymeasures.JensenShannonMeasure;
+import hybirdsem.owlssm.wsc.utils.MatchMakerState;
 
 /**
  * @author Ben
@@ -70,7 +71,7 @@ public class MatchmakerInterface {
 	}
 	
 	public void createMatchmaker() {
-		short type = (short)GUIState.getInstance().getSimilarityMeasure();
+		short type = (short)MatchMakerState.getInstance().getSimilarityMeasure();
 		ErrorLog.debug("Similarity measure: " + getSimType(type));
 		switch(type){		
 			case SimilarityMeasure.SIMILARITY_COSINE:
@@ -98,8 +99,8 @@ public class MatchmakerInterface {
 			ErrorLog.debug("Similarity treshold: " + treshold);
 			matcher.setIntegrative(integrative);
 			ranMatchmaker = true;
-			//matcher.setSimilarityMeasure(GUIState.getInstance().getSimilarityMeasure());
-			SortedSet tmpResult = matcher.matchRequest(profileURI, GUIState.getInstance().getMinDegree(), GUIState.getInstance().getTreshold());
+			//matcher.setSimilarityMeasure(MatchMakerState.getInstance().getSimilarityMeasure());
+			SortedSet tmpResult = matcher.matchRequest(profileURI, MatchMakerState.getInstance().getMinDegree(), MatchMakerState.getInstance().getTreshold());
 			SortedSet result;
 			if(owlsmxp) {
 				try {
@@ -140,7 +141,7 @@ public class MatchmakerInterface {
 		matcher.addService(profileURI);
 		}
 		catch(Exception e) {
-			GUIState.displayWarning("Matchmaker", "Couldn't add service " + profileURI + " either file not found or not an valid OWL-S 1.1 file."); 
+			MatchMakerState.displayWarning("Matchmaker", "Couldn't add service " + profileURI + " either file not found or not an valid OWL-S 1.1 file."); 
 		}
 		
 	}
@@ -148,19 +149,19 @@ public class MatchmakerInterface {
 	private SortedSet MatchmakerToGUISet(SortedSet result) {		
 		SortedSet hybrid = new TreeSet();
 		if (result == null) {
-			GUIState.displayWarning("Matchmaker", "Result set is empty");
+			MatchMakerState.displayWarning("Matchmaker", "Result set is empty");
 //			ErrorLog.report("Matchmaker didn't return any result");
 //			owlsmx.io.ErrorLog.debug("Matchmaker didn't return any result");
 			return hybrid;
 		}
 //		owlsmx.io.ErrorLog.debug("Matchmaker result: " +  result);
 		MatchedService m_result;
-		HybridServiceItem h_result;
+		HybirdSemanticService h_result;
 		SemanticService s_item;
 		for(Iterator iter = result.iterator();iter.hasNext();){
 			m_result = (MatchedService) iter.next();
 			s_item = TestCollection.getInstance().getService(m_result.serviceURI);
-			h_result = new HybridServiceItem(s_item);
+			h_result = new HybirdSemanticService(s_item);
 			h_result.setDegreeOfMatch(m_result.degreeOfMatch);
 			h_result.setSyntacticSimilarity(m_result.similarity);
 //			owlsmx.io.ErrorLog.debug(this.getClass().toString() + "|M2GUI: MResult " + m_result.toString());
@@ -173,16 +174,16 @@ public class MatchmakerInterface {
 	private SortedSet MatchmakerToGUISet(SortedSet results, SortedSet compatibleResults) {
 		SortedSet hybrid = new TreeSet();
 		if(results == null) {
-			GUIState.displayWarning("Matchmaker", "Result set is empty");
+			MatchMakerState.displayWarning("Matchmaker", "Result set is empty");
 			return hybrid;
 		}
 		MatchedService m_result;
-		HybridServiceItem h_result;
+		HybirdSemanticService h_result;
 		SemanticService s_item;
 		for(Iterator iter = results.iterator(); iter.hasNext(); ) {
 			m_result = (MatchedService) iter.next();
 			s_item = TestCollection.getInstance().getService(m_result.serviceURI);
-			h_result = new HybridServiceItem(s_item);
+			h_result = new HybirdSemanticService(s_item);
 			h_result.setDegreeOfMatch(m_result.degreeOfMatch);
 			h_result.setSyntacticSimilarity(m_result.similarity);
 			h_result.setDataTypeCompatible(compatibleResults.contains(m_result));
