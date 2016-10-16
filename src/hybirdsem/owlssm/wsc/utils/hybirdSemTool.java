@@ -9,6 +9,8 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.Vector;
 
+import hybirdsem.owlssm.wsc.util.tasks.AddServicesToMatchmakerTask;
+import hybirdsem.owlssm.wsc.util.tasks.RunQueriesTask;
 import de.dfki.sme2.TestCollection;
 import hybirdsem.owlssm.wsc.data.SemServRequest;
 import hybirdsem.owlssm.wsc.data.SemanticService;
@@ -55,29 +57,55 @@ public class hybirdSemTool {
 
 			// register all the services
 			serviceRegister(offers);
-			
+
 			// load all the service requests
 			serviceRequests(requests);
+
+			// add Service to matchmaker
+			runAllQueries(services);
 
 		}
 	}
 
 	private static void serviceRegister(Set<URI> offers) {
-		for (URI uri : offers) {		
+		for (URI uri : offers) {
 			SemanticService semService = new SemanticService(uri);
 			services.put(uri, semService);
 		}
 	}
-	
+
 	private static void serviceRequests(Set<URI> requests) {
-		for (URI uri : requests) {		
+		for (URI uri : requests) {
 			SemServRequest semServReq = new SemServRequest(uri);
-			queries.put(uri, semServReq);					
-			answerset.put(uri,new TreeSet());
-			matchmakerAnswerset.put(uri,new TreeSet());				
+			queries.put(uri, semServReq);
+			answerset.put(uri, new TreeSet());
+			matchmakerAnswerset.put(uri, new TreeSet());
 		}
 	}
+
+	private static void runAllQueries(Map<URI, SemanticService> services2) {
+		AddServicesToMatchmakerTask addServicesTask = new AddServicesToMatchmakerTask();
+		RunQueriesTask runQueriesTask = new RunQueriesTask();
+		addServicesTask.go();
+	}
+
+	public static Map<URI, SemanticService> getServices() {
+		return services;
+	}
+
+	public static void setServices(Map<URI, SemanticService> services) {
+		hybirdSemTool.services = services;
+	}
 	
+	
+
+	public static Map<URI, SemServRequest> getQueries() {
+		return queries;
+	}
+
+	public static void setQueries(Map<URI, SemServRequest> queries) {
+		hybirdSemTool.queries = queries;
+	}
 
 	private static void printTCInfo(TestCollection tc) {
 		System.out.println("Test collection information:");

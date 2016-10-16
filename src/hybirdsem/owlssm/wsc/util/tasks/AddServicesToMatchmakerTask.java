@@ -1,22 +1,44 @@
 package hybirdsem.owlssm.wsc.util.tasks;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
-import hybirdsem.owlssm.io.ErrorLog;
-import hybirdsem.owlssm.utils.MatchmakerInterface;
 import hybirdsem.owlssm.wsc.data.SemanticService;
+import hybirdsem.owlssm.io.ErrorLog;
+import hybirdsem.owlssm.wsc.utils.MatchmakerInterface;
+import hybirdsem.owlssm.wsc.utils.hybirdSemTool;
 
 public class AddServicesToMatchmakerTask {
-    private Set services = new TreeSet();
+	private Set<SemanticService> services = new TreeSet<SemanticService>();
 
-	public AddServicesToMatchmakerTask(Set services) {
-		MatchmakerInterface.getInstance().createMatchmaker();
-		SemanticService semServ;
-		ErrorLog.debug(this.getClass().toString() + "Services to add: " + services.size());
-		
-	
+	public AddServicesToMatchmakerTask() {
+		services = new HashSet<SemanticService>(hybirdSemTool.getServices().values());
+		// lengthOfTask = services.size();
+
 	}
-    
+
+	public void go() {
+		new ActualTask(services);
+
+	}
+
+	class ActualTask {
+		ActualTask(Set<SemanticService> services) {
+			MatchmakerInterface.getInstance().createMatchmaker();
+			SemanticService service;
+			ErrorLog.debug(this.getClass().toString() + "Services to add: " + services.size());
+
+			int current = 0;
+			for (Iterator<SemanticService> iter = services.iterator(); iter.hasNext(); current++) {
+				service = iter.next();
+				ErrorLog.debug(this.getClass().toString() + ": Adding service: " + service.getURI().toString());
+				MatchmakerInterface.getInstance().addService(service.getURI());
+			}
+
+		}
+
+	}
 
 }
