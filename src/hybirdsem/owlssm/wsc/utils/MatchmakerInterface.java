@@ -27,7 +27,7 @@ import hybirdsem.owlssm.data.MatchedService;
 import hybirdsem.owlssm.exceptions.MatchingException;
 import hybirdsem.owlssm.wsc.data.HybirdSemanticService;
 import hybirdsem.owlssm.wsc.data.SemanticService;
-import de.dfki.owlsmx.gui.data.TestCollection;
+import hybirdsem.owlssm.wsc.data.TestCollection;
 import hybirdsem.owlssm.similaritymeasures.SimilarityMeasure;
 import hybirdsem.owlssm.io.ErrorLog;
 import hybirdsem.owlssm.SimilarityMatchingEngine;

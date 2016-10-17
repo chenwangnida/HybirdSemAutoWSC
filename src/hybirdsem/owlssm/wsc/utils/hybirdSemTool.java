@@ -11,7 +11,7 @@ import java.util.Vector;
 
 import hybirdsem.owlssm.wsc.util.tasks.AddServicesToMatchmakerTask;
 import hybirdsem.owlssm.wsc.util.tasks.RunQueriesTask;
-import de.dfki.sme2.TestCollection;
+import hybirdsem.owlssm.wsc.data.TestCollection;
 import hybirdsem.owlssm.wsc.data.SemServRequest;
 import hybirdsem.owlssm.wsc.data.SemanticService;
 
@@ -20,12 +20,6 @@ public class hybirdSemTool {
 	private static String NO_TC_ERROR = "Error: A test collection XML file must be provided for the -x option.";
 
 	private static String X = "-x";
-	private static Map<URI, SemanticService> services = new HashMap<URI, SemanticService>();
-	private static Map<URI, SemServRequest> queries = new HashMap<URI, SemServRequest>();
-
-	private static Map<URI, TreeSet<?>> answerset = new HashMap<URI, TreeSet<?>>();
-	private static Map<URI, TreeSet<?>> matchmakerAnswerset = new HashMap<URI, TreeSet<?>>();
-
 
 	public static void main(String[] args) {
 		Vector<String> arguments = new Vector<String>();
@@ -36,7 +30,7 @@ public class hybirdSemTool {
 			Set<URI> offers = null;
 			try {
 				String tcString = arguments.get(arguments.indexOf(X) + 1);
-				TestCollection tc = TestCollection.parse(tcString);
+				de.dfki.sme2.TestCollection tc = de.dfki.sme2.TestCollection.parse(tcString);
 				if (tc == null) {
 					System.err.println(FILE_NOT_FOUND_ERROR + " (" + tcString + ")");
 					System.exit(1);
@@ -53,8 +47,8 @@ public class hybirdSemTool {
 			} catch (ArrayIndexOutOfBoundsException e) {
 				System.err.println(NO_TC_ERROR);
 				System.exit(1);
-			}
-
+			}			
+			
 			// register all the services
 			serviceRegister(offers);
 
@@ -62,7 +56,7 @@ public class hybirdSemTool {
 			serviceRequests(requests);
 
 			// add Service to matchmaker
-			runAllQueries(services);
+			runAllQueries(TestCollection.getInstance().getServices());
 
 		}
 	}
@@ -70,44 +64,28 @@ public class hybirdSemTool {
 	private static void serviceRegister(Set<URI> offers) {
 		for (URI uri : offers) {
 			SemanticService semService = new SemanticService(uri);
-			services.put(uri, semService);
+			TestCollection.getInstance().getServices().put(uri, semService);
 		}
 	}
 
 	private static void serviceRequests(Set<URI> requests) {
 		for (URI uri : requests) {
 			SemServRequest semServReq = new SemServRequest(uri);
-			queries.put(uri, semServReq);
-			answerset.put(uri, new TreeSet());
-			matchmakerAnswerset.put(uri, new TreeSet());
+			TestCollection.getInstance().getQueries().put(uri, semServReq);
+			TestCollection.getInstance().getAnswerset().put(uri, new TreeSet());
+			TestCollection.getInstance().getMatchmakerAnswerset().put(uri, new TreeSet());
 		}
 	}
 
-	private static void runAllQueries(Map<URI, SemanticService> services2) {
+	private static void runAllQueries(Map<URI, SemanticService> relev) {
 		AddServicesToMatchmakerTask addServicesTask = new AddServicesToMatchmakerTask();
 		RunQueriesTask runQueriesTask = new RunQueriesTask();
 		addServicesTask.go();
-	}
-
-	public static Map<URI, SemanticService> getServices() {
-		return services;
-	}
-
-	public static void setServices(Map<URI, SemanticService> services) {
-		hybirdSemTool.services = services;
-	}
+		runQueriesTask.go();
 	
-	
-
-	public static Map<URI, SemServRequest> getQueries() {
-		return queries;
 	}
 
-	public static void setQueries(Map<URI, SemServRequest> queries) {
-		hybirdSemTool.queries = queries;
-	}
-
-	private static void printTCInfo(TestCollection tc) {
+	private static void printTCInfo(de.dfki.sme2.TestCollection tc) {
 		System.out.println("Test collection information:");
 		System.out.println("Name:\t\t" + tc.getName());
 		System.out.println("Type:\t\t" + tc.getType());

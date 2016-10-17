@@ -6,12 +6,14 @@ import java.util.TreeSet;
 
 import hybirdsem.owlssm.wsc.data.SemServRequest;
 import hybirdsem.owlssm.wsc.utils.hybirdSemTool;
+import hybirdsem.owlssm.wsc.data.TestCollection;;
+
 
 public class RunQueriesTask {
 	private SortedSet<SemServRequest> queries = new TreeSet<SemServRequest>();
 
 	public RunQueriesTask() {
-		queries = new TreeSet<SemServRequest>(hybirdSemTool.getQueries().values());
+		queries = new TreeSet<SemServRequest>(TestCollection.getInstance().getQueries().values());
 	}
 
 	public void go() {

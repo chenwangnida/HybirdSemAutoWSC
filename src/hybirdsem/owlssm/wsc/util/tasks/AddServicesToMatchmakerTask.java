@@ -8,13 +8,13 @@ import java.util.TreeSet;
 import hybirdsem.owlssm.wsc.data.SemanticService;
 import hybirdsem.owlssm.io.ErrorLog;
 import hybirdsem.owlssm.wsc.utils.MatchmakerInterface;
-import hybirdsem.owlssm.wsc.utils.hybirdSemTool;
+import hybirdsem.owlssm.wsc.data.TestCollection;;
 
 public class AddServicesToMatchmakerTask {
 	private Set<SemanticService> services = new TreeSet<SemanticService>();
 
 	public AddServicesToMatchmakerTask() {
-		services = new HashSet<SemanticService>(hybirdSemTool.getServices().values());
+		services = new HashSet<SemanticService>(TestCollection.getInstance().getServices().values());
 		// lengthOfTask = services.size();
 
 	}
