@@ -9,9 +9,9 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.Vector;
 
-import hybirdsem.owlssm.wsc.util.tasks.AddServicesToMatchmakerTask;
-import hybirdsem.owlssm.wsc.util.tasks.RunQueriesTask;
 import hybirdsem.owlssm.wsc.data.TestCollection;
+import hybirdsem.owlssm.wsc.utils.tasks.AddServicesToMatchmakerTask;
+import hybirdsem.owlssm.wsc.utils.tasks.RunQueriesTask;
 import hybirdsem.owlssm.wsc.data.SemServRequest;
 import hybirdsem.owlssm.wsc.data.SemanticService;
 

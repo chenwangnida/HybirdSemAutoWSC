@@ -1,4 +1,4 @@
-package hybirdsem.owlssm.wsc.util.tasks;
+package hybirdsem.owlssm.wsc.utils.tasks;
 
 import java.util.Iterator;
 import java.util.SortedSet;
